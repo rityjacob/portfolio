@@ -32,6 +32,80 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
+// Hero to About transition
+const heroSection = document.querySelector('.hero');
+const aboutSection = document.querySelector('#about');
+
+function handleHeroToAboutTransition() {
+    const heroRect = heroSection.getBoundingClientRect();
+    const aboutRect = aboutSection.getBoundingClientRect();
+    
+    // Calculate transition progress
+    const scrollProgress = Math.max(0, Math.min(1, -heroRect.bottom / (aboutRect.top - heroRect.bottom)));
+    
+    // Apply transition effects
+    if (scrollProgress > 0) {
+        aboutSection.style.opacity = scrollProgress;
+        aboutSection.style.transform = `translateY(${(1 - scrollProgress) * 50}px)`;
+        
+        // Add special glow effect to about section
+        aboutSection.style.boxShadow = `0 0 ${scrollProgress * 50}px rgba(51, 204, 153, ${scrollProgress * 0.3})`;
+    }
+}
+
+// Color transition on scroll
+let currentSection = 0;
+const sections = document.querySelectorAll('.section');
+
+function updateColors() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top + scrollY;
+        const sectionHeight = rect.height;
+        
+        // Calculate how much of the section is visible
+        const visibleStart = Math.max(0, scrollY - sectionTop + windowHeight * 0.5);
+        const visibleEnd = Math.min(sectionHeight, scrollY + windowHeight - sectionTop + windowHeight * 0.5);
+        const visibleRatio = Math.max(0, Math.min(1, (visibleEnd - visibleStart) / sectionHeight));
+        
+        if (visibleRatio > 0.3) {
+            // Add color transition class
+            section.classList.add('color-transition');
+            
+            // Update text colors based on section
+            const textElements = section.querySelectorAll('h2, h3, p, li, .skill-item, .category-label');
+            textElements.forEach(el => {
+                el.style.transition = 'color 0.6s ease';
+                if (index % 2 === 0) {
+                    el.style.color = 'var(--text-primary)';
+                } else {
+                    el.style.color = 'var(--text-secondary)';
+                }
+            });
+        } else {
+            section.classList.remove('color-transition');
+        }
+    });
+}
+
+// Throttled scroll event
+let ticking = false;
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            updateColors();
+            handleHeroToAboutTransition();
+        });
+        ticking = true;
+        setTimeout(() => { ticking = false; }, 16);
+    }
+}
+
+window.addEventListener('scroll', requestTick);
+
 // Mobile menu toggle removed - using hero navigation instead
 
 // Contact form handling
