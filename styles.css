@@ -29,150 +29,102 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-    box-shadow: var(--shadow-md);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    cursor: pointer;
-}
+/* Navigation styles removed - using hero navigation instead */
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
+    background: #0a0a0a;
     color: white;
-    padding: 120px 0 80px;
+    padding: 80px 0 60px;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-}
-
 .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
+.hero-name {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    animation: fadeInUp 1s ease;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-.hero .subtitle {
-    font-size: 1.25rem;
+.hero-skills {
+    font-size: 1.1rem;
+    color: #e2e8f0;
     margin-bottom: 2rem;
-    opacity: 0.9;
-    animation: fadeInUp 1s ease 0.2s both;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
-.hero .contact-info {
+.hero-nav {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
     flex-wrap: wrap;
-    animation: fadeInUp 1s ease 0.4s both;
 }
 
-.hero .contact-info a {
-    color: white;
+.hero-nav a {
+    color: #06b6d4;
     text-decoration: none;
-    display: flex;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.hero-nav a:hover {
+    color: #0891b2;
+    background: rgba(6, 182, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-separator {
+    color: #06b6d4;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Resume Download Button */
+.resume-download {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.download-btn {
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    color: white;
+    text-decoration: none;
     padding: 0.75rem 1.5rem;
-    background: rgba(59, 130, 246, 0.2);
-    border-radius: 50px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
 }
 
-.hero .contact-info a:hover {
-    background: rgba(59, 130, 246, 0.3);
+.download-btn:hover {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    color: white;
+}
+
+.download-btn i {
+    font-size: 1.1rem;
 }
 
 /* Container */
@@ -369,6 +321,12 @@ body {
     margin-bottom: 0.5rem;
 }
 
+/* Contact Actions */
+.contact-actions {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 /* Contact Form */
 .contact-form {
     background: var(--bg-secondary);
@@ -502,21 +460,26 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .hero {
+        padding: 60px 0 40px;
     }
 
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .hero h1 {
+    .hero-name {
         font-size: 2.5rem;
     }
 
-    .hero .contact-info {
+    .hero-skills {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-nav {
         flex-direction: column;
-        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hero-nav a {
+        font-size: 1rem;
     }
 
     .section {
@@ -595,6 +558,111 @@ body {
     background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
     border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Certifications */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.certification-card {
+    background: var(--bg-secondary);
+    border-radius: 0;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.certification-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+}
+
+.cert-badge {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1.5rem;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.cert-badge:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.cert-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.cert-badge:hover .cert-image {
+    transform: scale(1.05);
+}
+
+/* AWS Badge specific styling to remove white background */
+.cert-badge img[alt*="AWS"] {
+    background: transparent;
+    mix-blend-mode: multiply;
+}
+
+/* ISTQB Badge specific styling */
+.cert-badge img[alt*="ISTQB"] {
+    background: transparent;
+}
+
+.cert-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* GitHub Links */
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.github-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.github-link i {
+    font-size: 1.1rem;
 }
 
 /* Ripple animation */

@@ -3,47 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rity Jacob - QA & Cloud Professional</title>
+    <title>RAJ</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Rity Jacob</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Rity Abraham Jacob</h1>
-            <p class="subtitle">QA Professional | Cloud & DevOps Enthusiast</p>
-            <div class="contact-info">
-                <a href="mailto:rityjacob@gmail.com">
-                    <i class="fas fa-envelope"></i>
-                    rityjacob@gmail.com
-                </a>
-                <a href="tel:+14376632290">
-                    <i class="fas fa-phone"></i>
-                    +1 (437) 663 2290
-                </a>
-                <a href="https://linkedin.com/in/rity-jacob" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
+            <h1 class="hero-name">Rity Abraham Jacob</h1>
+            <p class="hero-skills">Quality Assurance | Cloud & DevOps | Automation Testing | CI/CD</p>
+            
+            <!-- Navigation Menu -->
+            <nav class="hero-nav">
+                <a href="#about">About</a>
+                <span class="nav-separator">|</span>
+                <a href="#skills">Skills</a>
+                <span class="nav-separator">|</span>
+                <a href="#experience">Experience</a>
+                <span class="nav-separator">|</span>
+                <a href="#education">Education</a>
+                <span class="nav-separator">|</span>
+                <a href="#certifications">Certifications</a>
+                <span class="nav-separator">|</span>
+                <a href="#contact">Contact</a>
+            </nav>
+            
+            <div class="resume-download">
+                <a href="Resume/Rity_Jacob_QA.pdf" download="Rity_Jacob_Resume.pdf" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download Resume
                 </a>
             </div>
         </div>
@@ -168,13 +158,22 @@
     </section>
 
     <!-- Certifications Section -->
-    <section class="section">
+    <section class="section" id="certifications">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Certifications</h2>
-            <div class="card animate-on-scroll">
-                <div class="skill-tags">
-                    <span class="skill-tag">AWS Cloud Practitioner (2025)</span>
-                    <span class="skill-tag">ISTQB CTFL (2025)</span>
+            <div class="certifications-grid">
+                <div class="certification-card animate-on-scroll">
+                    <div class="cert-badge">
+                        <img src="images/AWS.png" alt="AWS Certified Cloud Practitioner" class="cert-image">
+                    </div>
+                    <div class="cert-title">AWS Certified Cloud Practitioner</div>
+                </div>
+
+                <div class="certification-card animate-on-scroll">
+                    <div class="cert-badge">
+                        <img src="images/ISTQB.png" alt="ISTQB Certified Tester Foundation Level" class="cert-image">
+                    </div>
+                    <div class="cert-title">ISTQB Certified Tester Foundation Level</div>
                 </div>
             </div>
         </div>
@@ -198,6 +197,11 @@
                 <div style="margin-top: 1rem;">
                     <strong>Tech Stack:</strong> Node.js, TypeScript, WebSockets, Solana RPC, Helius, Jupiter API
                 </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://github.com/rityjacob/sniper" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i> GitHub Link
+                    </a>
+                </div>
             </div>
 
             <div class="experience-item animate-on-scroll">
@@ -212,6 +216,11 @@
                 </ul>
                 <div style="margin-top: 1rem;">
                     <strong>Tech Stack:</strong> Robot Framework, SeleniumLibrary, Python, GitHub Actions
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://github.com/rityjacob/E-Commerce-Test-Automation-Suite" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i> GitHub Link
+                    </a>
                 </div>
             </div>
 
@@ -228,6 +237,11 @@
                 <div style="margin-top: 1rem;">
                     <strong>Tech Stack:</strong> AWS (EC2, RDS, S3, IAM, Route 53, ECR, CloudWatch), GitHub Actions, Docker, Node.js, Jest, ESLint, SonarQube, OWASP ZAP, NGINX, K6, Grafana
                 </div>
+                <div style="margin-top: 1rem;">
+                    <a href="https://github.com/rityjacob/AWS-Healthcare-Infra-Simulation" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i> GitHub Link
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -236,6 +250,12 @@
     <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <div class="contact-actions animate-on-scroll">
+                <a href="Resume/Rity_Jacob_QA.pdf" download="Rity_Jacob_Resume.pdf" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download Resume
+                </a>
+            </div>
             <div class="contact-form animate-on-scroll">
                 <form id="contactForm">
                     <div id="formMessage"></div>

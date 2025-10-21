@@ -12,15 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+// Navbar scroll effect removed - using hero navigation instead
 
 // Scroll animations
 const observerOptions = {
@@ -40,13 +32,7 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
-// Mobile menu toggle
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-});
+// Mobile menu toggle removed - using hero navigation instead
 
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
@@ -93,22 +79,7 @@ inputs.forEach(input => {
     });
 });
 
-// Add typing animation to hero title
-const heroTitle = document.querySelector('.hero h1');
-const titleText = heroTitle.textContent;
-heroTitle.textContent = '';
- 
-let i = 0;
-const typeWriter = () => {
-    if (i < titleText.length) {
-        heroTitle.textContent += titleText.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-    }
-};
- 
-// Start typing animation after a short delay
-setTimeout(typeWriter, 500);
+// Hero title is now stable - no typing animation
 
 // Add parallax effect to hero section
 window.addEventListener('scroll', () => {
