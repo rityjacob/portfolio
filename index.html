@@ -4,261 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rity Jacob - QA & Cloud Professional</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #e4e4e4;
-            background-color: #121212;
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(135deg, #000, #3d0054);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        section {
-            background: #1e1e1e;
-            margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        h2 {
-            color: #bb86fc;
-            margin-top: 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #333;
-        }
-        h3 {
-            color: #03dac6;
-        }
-        .contact-info {
-            margin: 15px 0;
-            font-size: 1.1rem;
-        }
-        .contact-info a {
-            color: #bb86fc;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        .contact-info a:hover {
-            color: #cf6dff;
-        }
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .skill-category {
-            flex: 1;
-            min-width: 200px;
-        }
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skill-item {
-            background: #2d2d2d;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: #03dac6;
-            border: 1px solid #444;
-        }
-        .experience {
-            margin-bottom: 25px;
-        }
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-        .job-title {
-            font-weight: bold;
-            margin: 0;
-            color: #bb86fc;
-        }
-        .company {
-            margin: 5px 0;
-            color: #a0a0a0;
-        }
-        .date {
-            color: #7b7b7b;
-        }
-        ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        .education {
-            margin-bottom: 15px;
-        }
-        .project {
-            margin-bottom: 25px;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #121212;
-            color: #7b7b7b;
-            border-top: 1px solid #333;
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Rity Jacob</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
             <h1>Rity Abraham Jacob</h1>
-            <p>QA Professional | Cloud & DevOps Enthusiast</p>
+            <p class="subtitle">QA Professional | Cloud & DevOps Enthusiast</p>
             <div class="contact-info">
-                <a href="mailto:rityjacob@gmail.com">rityjacob@gmail.com</a> |
-                <a href="tel:+14376632290">+1 (437) 663 2290</a> |
-                <a href="https://linkedin.com/in/rity-jacob" target="_blank">LinkedIn</a>
+                <a href="mailto:rityjacob@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    rityjacob@gmail.com
+                </a>
+                <a href="tel:+14376632290">
+                    <i class="fas fa-phone"></i>
+                    +1 (437) 663 2290
+                </a>
+                <a href="https://linkedin.com/in/rity-jacob" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <div class="container">
-        <section>
-            <h2>Professional Summary</h2>
-            <p>
-                QA professional with 2 years of experience in software testing, defect management, and cross-functional collaboration. 
-                Currently upskilling in cloud and DevOps, with hands-on expertise in CI/CD pipelines, containerization with Docker, 
-                infrastructure automation using Terraform and cloud platforms like AWS.
-            </p>
-        </section>
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Professional Summary</h2>
+            <div class="card animate-on-scroll">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+                    QA professional with 3+ years of experience in manual and automation testing in the banking domain. 
+                    ISTQB Certified with hands-on expertise in Robot Framework and Selenium for automated tests, 
+                    building and maintaining CI/CD pipelines with GitHub Actions and Docker, and collaborating in Agile 
+                    environments for high-quality releases. Currently pursuing advanced cloud technologies and DevOps practices.
+                </p>
+            </div>
+        </div>
+    </section>
 
-        <section>
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="card animate-on-scroll">
                     <h3>Testing & QA</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">End-to-End Testing</span>
-                        <span class="skill-item">Regression Testing</span>
-                        <span class="skill-item">Test Planning</span>
-                        <span class="skill-item">ALM</span>
-                        <span class="skill-item">Selenium</span>
-                        <span class="skill-item">Postman</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">End-to-End Testing</span>
+                        <span class="skill-tag">Regression Testing</span>
+                        <span class="skill-tag">Test Planning</span>
+                        <span class="skill-tag">SIT/UAT</span>
+                        <span class="skill-tag">Robot Framework</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">HP ALM</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="card animate-on-scroll">
                     <h3>Programming</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">R</span>
-                        <span class="skill-item">SQL</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">TypeScript</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="card animate-on-scroll">
                     <h3>DevOps & Cloud</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">CI/CD</span>
-                        <span class="skill-item">GitHub Actions</span>
-                        <span class="skill-item">Docker</span>
-                        <span class="skill-item">Terraform</span>
-                        <span class="skill-item">Kubernetes</span>
-                        <span class="skill-item">AWS</span>
-                        <span class="skill-item">GCP</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Jenkins</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">SSMS</span>
-                        <span class="skill-item">Power BI</span>
-                        <span class="skill-item">Tableau</span>
-                        <span class="skill-item">SonarQube</span>
-                        <span class="skill-item">OWASP ZAP</span>
+                <div class="card animate-on-scroll">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SSMS</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">SonarQube</span>
+                        <span class="skill-tag">OWASP ZAP</span>
+                        <span class="skill-tag">Jest</span>
+                        <span class="skill-tag">ESLint</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Professional Experience</h2>
-            <div class="experience">
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Professional Experience</h2>
+            <div class="experience-item animate-on-scroll">
                 <div class="experience-header">
                     <div>
                         <h3 class="job-title">Quality Assurance Analyst</h3>
-                        <p class="company">Canadian Imperial Bank of Commerce (via Tata Consultancy Services)</p>
+                        <p class="company">Tata Consultancy Services, India (Project: CIBC)</p>
                     </div>
                     <span class="date">Aug 2021 – Aug 2023</span>
                 </div>
                 <ul>
-                    <li>Experienced working with applications of CIBC including ECIF, COINS, FTOL, etc.</li>
-                    <li>Planned, created, and executed comprehensive test cases and scenarios based on business and functional requirements.</li>
-                    <li>Performed functional, regression, SIT, and UAT testing to ensure application quality before deployment.</li>
-                    <li>Managed end-to-end testing activities and defect tracking using ALM, collaborating with onsite/offshore teams and developers for resolution.</li>
-                    <li>Monitored test progress and delivered detailed QA status reports in adherence to CIBC's standards and best practices.</li>
+                    <li>Refined and validated business requirements, designed SIT/UAT test plans, created/executed 100+ test cases, ensured 95% defect resolution</li>
+                    <li>Executed end-to-end testing across major CIBC applications including ECIF, COINS, FTOL</li>
+                    <li>Performed API testing using SOA tool for XML/JSON payloads, headers, status codes, and negative scenarios</li>
+                    <li>Reviewed documentation, prepared test data, coordinated environment readiness for SIT/UAT</li>
+                    <li>Assessed SIT/UAT outcomes, performed SQL-based backend validation, identified system gaps across UI, API, and database layers</li>
+                    <li>Documented test results, logged/tracked defects in HP ALM, provided recommendations</li>
+                    <li>Collaborated in Agile/Scrum teams with various stakeholders</li>
                 </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Education</h2>
-            <div class="education">
-                <h3>CloudOps (Post-Graduate Certificate)</h3>
-                <p>York University, North York, ON</p>
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Education</h2>
+            <div class="education-grid">
+                <div class="education-item animate-on-scroll">
+                    <h3>Post-Graduate Certificate in CloudOps</h3>
+                    <p>York University, North York, ON</p>
+                    <p style="color: var(--text-light);">Sep 2024 – May 2025</p>
+                </div>
+                <div class="education-item animate-on-scroll">
+                    <h3>Post-Graduate Certificate in Big Data Architecture</h3>
+                    <p>Conestoga College, Kitchener, ON</p>
+                    <p style="color: var(--text-light);">Sep 2023 – Apr 2024</p>
+                </div>
+                <div class="education-item animate-on-scroll">
+                    <h3>B.Tech Computer Science Engineering</h3>
+                    <p>Amal Jyothi College of Engineering Autonomous, Kottayam, India</p>
+                    <p style="color: var(--text-light);">Aug 2017 – Apr 2021</p>
+                </div>
             </div>
-            <div class="education">
-                <h3>Big Data Solution Architecture (Post-Graduate Certificate)</h3>
-                <p>Conestoga College, Kitchener, ON</p>
-            </div>
-            <div class="education">
-                <h3>Bachelor of Technology - Computer Science Engineering</h3>
-                <p>APJ Abdul Kalam Technological University, Kerala, India</p>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Certifications</h2>
-            <div class="skill-list">
-                <span class="skill-item">AWS Cloud Practitioner (2025)</span>
+    <!-- Certifications Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Certifications</h2>
+            <div class="card animate-on-scroll">
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS Cloud Practitioner (2025)</span>
+                    <span class="skill-tag">ISTQB CTFL (2025)</span>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Project Experience</h2>
-            <div class="project">
+    <!-- Project Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Project Experience</h2>
+            
+            <div class="experience-item animate-on-scroll">
                 <div class="experience-header">
-                    <h3>Simulated Cloud Migration for Healthcare Organization (Capstone Project)</h3>
-                    <span class="date">April 2025</span>
+                    <h3 class="job-title">Solana Trading Bot — Real-Time Trading Automation</h3>
+                    <span class="date">Jul 2025 – Present</span>
                 </div>
                 <ul>
-                    <li>Collaborated on a simulated cloud migration project for a healthcare organization, focusing on security, high availability and compliance with healthcare data regulations.</li>
-                    <li>Architected a secure, multi-AZ AWS infrastructure using VPC, EC2, RDS (Multi-AZ), S3, IAM, and CloudWatch, incorporating a warm standby disaster recovery setup across two regions with Route 53 failover.</li>
-                    <li>Designed and implemented a full CI/CD pipeline using GitHub Actions to build, test, and deploy a Dockerized Node.js application to AWS EC2 via Amazon ECR.</li>
-                    <li>Developed and executed automated test suites using Jest.</li>
-                    <li>Enforced code quality standards using ESLint and integrated it as a mandatory pipeline step.</li>
-                    <li>Configured SonarQube (SAST) and OWASP ZAP (DAST) into the pipeline for comprehensive security scanning during both push and PR events.</li>
-                    <li>Deployed the application using Docker containers and set up NGINX as a reverse proxy to expose the service via HTTP.</li>
+                    <li>Built a Node.js bot to replicate Solana wallet trades using WebSocket RPC, Helius webhooks, and Jupiter API</li>
+                    <li>Implemented real-time market data processing and automated trading strategies</li>
+                    <li>Integrated with Solana blockchain for secure transaction handling</li>
                 </ul>
+                <div style="margin-top: 1rem;">
+                    <strong>Tech Stack:</strong> Node.js, TypeScript, WebSockets, Solana RPC, Helius, Jupiter API
+                </div>
             </div>
-        </section>
-    </div>
 
+            <div class="experience-item animate-on-scroll">
+                <div class="experience-header">
+                    <h3 class="job-title">E-Commerce Test Automation Suite</h3>
+                    <span class="date">Sep 2025</span>
+                </div>
+                <ul>
+                    <li>Developed an end-to-end automation suite for an e-commerce site</li>
+                    <li>Integrated with CI/CD pipelines for regression testing</li>
+                    <li>Implemented comprehensive test coverage for user journeys and payment flows</li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <strong>Tech Stack:</strong> Robot Framework, SeleniumLibrary, Python, GitHub Actions
+                </div>
+            </div>
+
+            <div class="experience-item animate-on-scroll">
+                <div class="experience-header">
+                    <h3 class="job-title">Simulated Cloud Migration for Healthcare Organization</h3>
+                    <span class="date">Apr 2025</span>
+                </div>
+                <ul>
+                    <li>Designed a secure AWS infrastructure with CI/CD automation, containerized deployment, security checks, and performance monitoring</li>
+                    <li>Implemented multi-AZ deployment with disaster recovery capabilities</li>
+                    <li>Configured comprehensive security scanning and monitoring solutions</li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <strong>Tech Stack:</strong> AWS (EC2, RDS, S3, IAM, Route 53, ECR, CloudWatch), GitHub Actions, Docker, Node.js, Jest, ESLint, SonarQube, OWASP ZAP, NGINX, K6, Grafana
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <div class="contact-form animate-on-scroll">
+                <form id="contactForm">
+                    <div id="formMessage"></div>
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Rity Abraham Jacob. All rights reserved.</p>
+            <div class="footer-content">
+                <p>&copy; 2025 Rity Abraham Jacob. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="mailto:rityjacob@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+14376632290" title="Phone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/rity-jacob" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
