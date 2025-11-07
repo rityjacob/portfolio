@@ -12,7 +12,7 @@ on:
 
 
 jobs:
-  Explore-GitHub-Actions:
+  Check-health:
     runs-on: ubuntu-latest
     steps:
       - run: echo "This is test run"
