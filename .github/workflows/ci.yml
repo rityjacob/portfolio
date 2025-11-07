@@ -15,13 +15,11 @@ jobs:
   Check-health:
     runs-on: ubuntu-latest
     steps:
-      - name: Install dependencies
-        run : npm install
-      - name : Build project
-        run : npm run build
+      - name: HTML Validation
+        run : npx htmlhint .
       
       - run: Successfully built
-      
+
 
 
 
