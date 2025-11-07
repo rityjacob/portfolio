@@ -15,7 +15,13 @@ jobs:
   Check-health:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This is test run"
+      - name: Install dependencies
+        run : npm install
+      - name : Build project
+        run : npm run build
+      
+      - run: Successfully built
+      
 
 
 
