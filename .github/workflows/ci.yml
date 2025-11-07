@@ -3,11 +3,11 @@ name: Portfolio
 on:
   push:
     branches:   
-      -main
-      -form
+      - main
+      - form
   pull_request:
     branches:
-      -main
+      - main
   workflow_dispatch:
 
 
