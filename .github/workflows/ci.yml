@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: HTML Validation
-        run : npx htmlhint "./PORTFOLIO/Frontend/*.html" 
+        run : npx htmlhint "Frontend/*.html" 
       
       - run: echo "All good"
 
