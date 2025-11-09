@@ -12,8 +12,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect removed - using hero navigation instead
-
 // Scroll animations
 const observerOptions = {
     threshold: 0.1,
@@ -54,7 +52,6 @@ function handleHeroToAboutTransition() {
 }
 
 // Color transition on scroll
-let currentSection = 0;
 const sections = document.querySelectorAll('.section');
 
 function updateColors() {
@@ -106,76 +103,66 @@ function requestTick() {
 
 window.addEventListener('scroll', requestTick);
 
-// Mobile menu toggle removed - using hero navigation instead
-
 // Contact form handling
 const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const formMessage = document.getElementById('formMessage');
 
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Show loading state
-    submitBtn.innerHTML = '<div class="loading"></div> Sending...';
-    submitBtn.disabled = true;
-    
-    try {
-        // Simulate form submission (replace with actual endpoint)
-        await new Promise(resolve => setTimeout(resolve, 2000));
+if (contactForm && submitBtn && formMessage) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        // Show success message
-        formMessage.innerHTML = '<div class="message success">Thank you! Your message has been sent successfully.</div>';
-        contactForm.reset();
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
         
-    } catch (error) {
-        // Show error message
-        formMessage.innerHTML = '<div class="message error">Sorry, there was an error sending your message. Please try again.</div>';
-    } finally {
-        // Reset button
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-        submitBtn.disabled = false;
-    }
-});
-
-// Form validation
-const inputs = contactForm.querySelectorAll('input, textarea');
-inputs.forEach(input => {
-    input.addEventListener('blur', () => {
-        if (input.hasAttribute('required') && !input.value.trim()) {
-            input.style.borderColor = '#ef4444';
-        } else {
-            input.style.borderColor = '';
+        // Show loading state
+        submitBtn.innerHTML = '<div class="loading"></div> Sending...';
+        submitBtn.disabled = true;
+        formMessage.innerHTML = '';
+        
+        try {
+            // Simulate form submission (replace with actual endpoint)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Show success message
+            formMessage.innerHTML = '<div class="message success">Thank you! Your message has been sent successfully.</div>';
+            contactForm.reset();
+            
+        } catch (error) {
+            // Show error message
+            formMessage.innerHTML = '<div class="message error">Sorry, there was an error sending your message. Please try again.</div>';
+        } finally {
+            // Reset button
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            submitBtn.disabled = false;
         }
     });
-});
 
-// Hero title is now stable - no typing animation
+    // Form validation
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', () => {
+            if (input.hasAttribute('required') && !input.value.trim()) {
+                input.style.borderColor = '#ef4444';
+            } else {
+                input.style.borderColor = '';
+            }
+        });
+    });
+}
 
 // Add parallax effect to hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
-    const rate = scrolled * -0.5;
-    hero.style.transform = `translateY(${rate}px)`;
+    if (hero) {
+        const rate = scrolled * -0.5;
+        hero.style.transform = `translateY(${rate}px)`;
+    }
 });
 
-// Add hover effects to skill tags
-document.querySelectorAll('.skill-tag').forEach(tag => {
-    tag.addEventListener('mouseenter', () => {
-        tag.style.transform = 'translateY(-2px) scale(1.05)';
-    });
-    
-    tag.addEventListener('mouseleave', () => {
-        tag.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Add click animation to buttons
-document.querySelectorAll('.btn').forEach(btn => {
+// Add click animation to buttons (excluding form submit button to avoid conflict)
+document.querySelectorAll('.btn:not(#submitBtn)').forEach(btn => {
     btn.addEventListener('click', function(e) {
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
