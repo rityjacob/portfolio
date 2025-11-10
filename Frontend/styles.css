@@ -1114,4 +1114,99 @@ body {
         opacity: 0;
     }
 }
+/* Clean Single Form Layout */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  max-width: 700px;
+  background: none; /* remove black box */
+  box-shadow: none;
+}
 
+/* Form styling — elegant standalone look */
+.contact-form {
+  width: 100%;
+  background: var(--bg-accent);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(51, 204, 153, 0.15);
+}
+
+/* Remove any pseudo background from before */
+.contact-form::before {
+  content: none !important;
+}
+
+/* Inputs and labels */
+.contact-form label {
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(34, 34, 34, 0.8);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary-color);
+  background: var(--bg-secondary);
+  outline: none;
+  box-shadow: 0 0 8px rgba(51, 204, 153, 0.4);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Submit button */
+.contact-form .btn {
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(51, 204, 153, 0.25);
+}
+
+.contact-form .btn:hover {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(51, 204, 153, 0.4);
+}
+
+/* Responsive centering */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .contact-form {
+    padding: 2rem;
+  }
+}
