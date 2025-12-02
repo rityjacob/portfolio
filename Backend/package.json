@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "RJ Portfolio",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server",
     "dev": "node --watch --env-file=.env server.js"
