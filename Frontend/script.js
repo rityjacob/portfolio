@@ -203,3 +203,49 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+const contactButton = document.querySelector('#submit-btn')
+
+contactButton.addEventListener('click',async(e)=>{
+    e.preventDefault()
+
+    const nameInput = document.querySelector('#name')
+    const emailInput = document.querySelector('#email')
+    const messageInput = document.querySelector('#message')
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+    
+    if(!name||!email||!message){
+     alert('All fields are required');
+     return;
+    }
+
+    //make object
+    const formData = {name,email,message};
+
+    //base url
+    const apiUrl = 'http://localhost:8000/api/contact'
+
+    try {
+        const response = await fetch(apiUrl,{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData),
+        });
+
+        if(response.ok){
+            alert('Message sent successfully');
+
+            nameInput.value = '';
+            emailInput.value='';
+            messageInput.value='';
+        }else{
+            alert('Failed to send message');
+        }
+    }catch(error){
+        alert(`An error occured: ${error.message}`);
+    }
+
+
+})
