@@ -15,7 +15,7 @@ app.use(logger);
 
 
 
-async function sendEmail(to_email,subject,body) {
+async function sendEmail(to_email,email,subject,body) {
 
     const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -30,11 +30,35 @@ async function sendEmail(to_email,subject,body) {
     return transporter.sendMail({
         from: process.env.SMTP_USER,
         to: to_email,
-        subject,
+        email,
+        subject: subject,
         text: body,
     });
     
 }
+
+
+async function sendEmailToUser(email, bodyUser) {
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: false,
+        auth : {
+            user : process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS
+        },
+    });
+
+    return transporter.sendMail({
+        from: process.env.SMTP_USER,
+        to: email,
+        email,
+        subject: 'Thank you for reaching out',
+        text: bodyUser,
+    });
+}
+
+
 
 app.get('/api/contact', (req,res)=>{
     res.json('hello');
@@ -42,23 +66,31 @@ app.get('/api/contact', (req,res)=>{
 
 
 app.post('/api/contact',async(req,res) =>{
-    const {name, subject, message} = req.body;
+    const {name, email, subject, message} = req.body;
 
-    if(!name||!subject||!message){
+    if(!name||!email||!message){
      return res.status(400).json({succes: false, msg:'All fields are required'})}
 
     try {
         // Building email
         const emailSubject = `New message from ${name}: ${subject}`;
-        const body = ` From : ${name}
+        const body = `From : ${name}
         Message: ${message}
-        `;
+        Email: ${email}`;
 
         //Send email, calling fn above
-        await sendEmail(process.env.SMTP_USER,subject, body);
+        await sendEmail(process.env.SMTP_USER, email, emailSubject, body);
+
+
+
+        // Email to the User
+        bodyUser =` Hello ${name}, thank you for reaching out. I will get back to you asap`
+
+        await sendEmailToUser(email,bodyUser);
+
 
         //Respond to frontend
-        res.json({sucess: true, msg:'Message sent'});
+        res.json({sucess: true, msg:'Message sent,test'});
     }catch(err){
         console.log(`Error occured `,err);
         res.status(500).json({ success: false, msg: 'Email Failed' });

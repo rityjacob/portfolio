@@ -206,23 +206,33 @@ document.head.appendChild(style);
 const contactButton = document.querySelector('#submit-btn')
 
 contactButton.addEventListener('click',async(e)=>{
+
     e.preventDefault()
 
-    const nameInput = document.querySelector('#name')
-    const emailInput = document.querySelector('#email')
-    const messageInput = document.querySelector('#message')
+    const nameInput = document.querySelector('#name');
+    const emailInput = document.querySelector('#email');
+    if (!emailInput.checkValidity()){
+        alert("Please enter a valid email address");
+        return;
+    }
+
+    const subjectInput = document.querySelector('#subject');
+    const messageInput = document.querySelector('#message');
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
+    const subject = subjectInput.value.trim();
+
     
-    if(!name||!email||!message){
+
+    if(!name||!email||!message||!subject){
      alert('All fields are required');
      return;
     }
 
     //make object
-    const formData = {name,email,message};
+    const formData = {name,email,subject,message};
 
     //base url
     const apiUrl = 'http://localhost:8000/api/contact'
@@ -240,6 +250,7 @@ contactButton.addEventListener('click',async(e)=>{
             nameInput.value = '';
             emailInput.value='';
             messageInput.value='';
+            subjectInput.value = '';
         }else{
             alert('Failed to send message');
         }
