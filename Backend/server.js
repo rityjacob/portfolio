@@ -42,8 +42,6 @@ app.get('/api/contact', (req,res)=>{
 
 
 app.post('/api/contact',async(req,res) =>{
-
-    res.json('hey');
     const {name, subject, message} = req.body;
 
     if(!name||!subject||!message){
@@ -67,7 +65,6 @@ app.post('/api/contact',async(req,res) =>{
     }
 
 
-   
 
 });
 
