@@ -2,9 +2,10 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "RJ Portfolio",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "node --watch --env-file=.env server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/rityjacob/portfolio/issues"
   },
-  "homepage": "https://github.com/rityjacob/portfolio#readme"
+  "homepage": "https://github.com/rityjacob/portfolio#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.2.0",
+    "nodemailer": "^7.0.11"
+  }
 }
