@@ -8,18 +8,22 @@ const nodemailer = require('nodemailer');
 const PORT = process.env.PORT || 5001
 const app = express();
 
+async function sendEmail(to_email,subject,body) {
 
-
-let contact = [{name: 'RJ', email:'rj@gmail.com', message:'Hello Rityy'},];
-
-const sendEmail = (to_email, subject,body) => {
-    console.log('Hello Rity');
+    const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: false,
+        auth : {
+            user : process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS
+        },
+    })
     
 }
 
 app.get('/api/contact',(req,res) =>{
     
-    sendEmail();
     res.json({ success: true, msg:'Message Sent'})
 
 });
