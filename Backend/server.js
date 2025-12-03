@@ -94,7 +94,6 @@ app.use(logger);
 async function sendEmail(to_email, subject, body) {
   try {
     const data = await resend.emails.send({
-      // ✅ use your verified domain here
       from: 'Rity <contact@rityjacob.com>',
       to: to_email,
       subject: subject,
@@ -154,7 +153,7 @@ app.post('/api/contact',async(req,res) =>{
 
         console.log('Sending admin email...');
         //Send email, calling fn above
-        await sendEmail(process.env.SMTP_USER, email, emailSubject, body);
+        await sendEmail(process.env.SMTP_USER, emailSubject, body);
 
 
         console.log('Sending user email...');
