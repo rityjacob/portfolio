@@ -10,8 +10,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'https://rityjacob.com',      // your Netlify/custom domain
-    'http://localhost:8000',      // dev backend (optional)
-    'http://localhost:5500'       // dev frontend (optional)
+    'http://localhost:8000',      // dev backend (optional)      // dev frontend (optional)
   ],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
@@ -39,8 +38,10 @@ async function sendEmail(to_email,email,subject,body) {
             user : process.env.SMTP_USER,
             pass: process.env.SMTP_PASS
         },
+        connectionTimeout: 10000,
     });
 
+    console.log('sending mail of admin');
     return transporter.sendMail({
         from: process.env.SMTP_USER,
         to: to_email,
@@ -49,10 +50,14 @@ async function sendEmail(to_email,email,subject,body) {
         text: body,
     });
     
+    
+    
 }
 
 
 async function sendEmailToUser(email, bodyUser) {
+    console.log('going to create transport');
+    
     const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: process.env.SMTP_PORT,
@@ -63,6 +68,8 @@ async function sendEmailToUser(email, bodyUser) {
         },
     });
 
+    console.log('sending mail of admin');
+
     return transporter.sendMail({
         from: process.env.SMTP_USER,
         to: email,
@@ -70,6 +77,8 @@ async function sendEmailToUser(email, bodyUser) {
         subject: 'Thank you for reaching out',
         text: bodyUser,
     });
+    console.log('sent mail');
+    
 }
 
 
@@ -80,6 +89,8 @@ app.get('/api/contact', (req,res)=>{
 
 
 app.post('/api/contact',async(req,res) =>{
+    console.log('Incoming contact request:', req.body);
+    
     const {name, email, subject, message} = req.body;
 
     if(!name||!email||!message){
@@ -92,11 +103,12 @@ app.post('/api/contact',async(req,res) =>{
         Message: ${message}
         Email: ${email}`;
 
+        console.log('Sending admin email...');
         //Send email, calling fn above
         await sendEmail(process.env.SMTP_USER, email, emailSubject, body);
 
 
-
+        console.log('Sending user email...');
         // Email to the User
         bodyUser =` Hello ${name}, thank you for reaching out. I will get back to you asap`
 
