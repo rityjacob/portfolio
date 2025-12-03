@@ -2,10 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const logger = require('./Logger/logger.js')
+const {Resend} = require('resend');
 
 
+const resend = new Resend(process.env.RESEND_API_KEY);
 const PORT = process.env.PORT || 5001
 const app = express();
+
+// temp log, cleanup later
+
+console.log('SMTP config on startup:', {
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  user: process.env.SMTP_USER,
+  hasPass: !!process.env.SMTP_PASS,
+});
 
 const corsOptions = {
   origin: [
@@ -28,58 +39,94 @@ app.use(logger);
 
 
 
-async function sendEmail(to_email,email,subject,body) {
+// async function sendEmail(to_email,email,subject,body) {
 
-    const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
-        secure: false,
-        auth : {
-            user : process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS
-        },
-        connectionTimeout: 10000,
+//     const transporter = nodemailer.createTransport({
+//         service : "gmail",
+//         auth : {
+//             user : process.env.SMTP_USER,
+//             pass: process.env.SMTP_PASS
+//         },
+//         connectionTimeout: 10000,
+//     });
+
+//     console.log('sending mail of admin');
+//     return transporter.sendMail({
+//         from: process.env.SMTP_USER,
+//         to: to_email,
+//         email,
+//         subject: subject,
+//         text: body,
+//     });
+    
+    
+    
+// }
+
+
+// async function sendEmailToUser(email, bodyUser) {
+//     console.log('going to create transport');
+    
+//     const transporter = nodemailer.createTransport({
+//         host: process.env.SMTP_HOST,
+//         port: process.env.SMTP_PORT,
+//         secure: false,
+//         auth : {
+//             user : process.env.SMTP_USER,
+//             pass: process.env.SMTP_PASS
+//         },
+//     });
+
+//     console.log('sending mail of admin');
+
+//     return transporter.sendMail({
+//         from: process.env.SMTP_USER,
+//         to: email,
+//         email,
+//         subject: 'Thank you for reaching out',
+//         text: bodyUser,
+//     });
+//     console.log('sent mail');
+    
+// }
+
+
+async function sendEmail(to_email, subject, body) {
+  try {
+    const data = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: to_email,
+      subject: subject,
+      text: body
     });
 
-    console.log('sending mail of admin');
-    return transporter.sendMail({
-        from: process.env.SMTP_USER,
-        to: to_email,
-        email,
-        subject: subject,
-        text: body,
-    });
-    
-    
-    
+    console.log("Admin email sent:", data);
+    return data;
+  } catch (error) {
+    console.error("Admin email error:", error);
+    throw error;
+  }
 }
-
 
 async function sendEmailToUser(email, bodyUser) {
-    console.log('going to create transport');
-    
-    const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
-        secure: false,
-        auth : {
-            user : process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS
-        },
+  try {
+    const data = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: email,
+      subject: "Thank you for reaching out",
+      text: bodyUser
     });
 
-    console.log('sending mail of admin');
-
-    return transporter.sendMail({
-        from: process.env.SMTP_USER,
-        to: email,
-        email,
-        subject: 'Thank you for reaching out',
-        text: bodyUser,
-    });
-    console.log('sent mail');
-    
+    console.log("User email sent:", data);
+    return data;
+  } catch (error) {
+    console.error("User email error:", error);
+    throw error;
+  }
 }
+
+
+
 
 
 
@@ -110,7 +157,7 @@ app.post('/api/contact',async(req,res) =>{
 
         console.log('Sending user email...');
         // Email to the User
-        bodyUser =` Hello ${name}, thank you for reaching out. I will get back to you asap`
+        bodyUser =` Hello ${name}, Thank you for your message. I will get back to you soon`
 
         await sendEmailToUser(email,bodyUser);
 
