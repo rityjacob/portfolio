@@ -111,7 +111,7 @@ async function sendEmail(to_email, subject, body) {
 async function sendEmailToUser(email, bodyUser) {
   try {
     const data = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
+      from: " Rity <contact@rityjacob.com>",
       to: email,
       subject: "Thank you for reaching out",
       text: bodyUser
