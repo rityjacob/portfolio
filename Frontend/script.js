@@ -235,7 +235,7 @@ contactButton.addEventListener('click',async(e)=>{
     const formData = {name,email,subject,message};
 
     //base url
-    const apiUrl = 'http://portfolio-5zd9.onrender.com/api/contact'
+    const apiUrl = 'https://portfolio-5zd9.onrender.com/api/contact'
 
     try {
         const response = await fetch(apiUrl,{
