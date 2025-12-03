@@ -7,8 +7,22 @@ const logger = require('./Logger/logger.js')
 const PORT = process.env.PORT || 5001
 const app = express();
 
+const corsOptions = {
+  origin: [
+    'https://rityjacob.com',      // your Netlify/custom domain
+    'http://localhost:8000',      // dev backend (optional)
+    'http://localhost:5500'       // dev frontend (optional)
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+};
+
+app.use(cors(corsOptions));
+app.options('/api/contact', cors(corsOptions)); // handle preflight explicitly
+
+
 app.use(express.json());
-app.use(cors());
+
 
 //logger
 app.use(logger);
