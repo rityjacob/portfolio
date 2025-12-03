@@ -94,16 +94,17 @@ app.use(logger);
 async function sendEmail(to_email, subject, body) {
   try {
     const data = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
+      // ✅ use your verified domain here
+      from: 'Rity <contact@rityjacob.com>',
       to: to_email,
       subject: subject,
-      text: body
+      text: body,
     });
 
-    console.log("Admin email sent:", data);
+    console.log('Admin email sent:', data);
     return data;
   } catch (error) {
-    console.error("Admin email error:", error);
+    console.error('Admin email error:', error);
     throw error;
   }
 }
@@ -111,16 +112,17 @@ async function sendEmail(to_email, subject, body) {
 async function sendEmailToUser(email, bodyUser) {
   try {
     const data = await resend.emails.send({
-      from: " Rity <contact@rityjacob.com>",
+      // ✅ same verified domain
+      from: 'Rity <contact@rityjacob.com>',
       to: email,
-      subject: "Thank you for reaching out",
-      text: bodyUser
+      subject: 'Thank you for reaching out',
+      text: bodyUser,
     });
 
-    console.log("User email sent:", data);
+    console.log('User email sent:', data);
     return data;
   } catch (error) {
-    console.error("User email error:", error);
+    console.error('User email error:', error);
     throw error;
   }
 }
