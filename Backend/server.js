@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-const logger = require('./Logger/logger.js')
+const logger = require('./Logger/logger.js');
 const {Resend} = require('resend');
-const route = require('./Routes/routes.js')
-
+const route = require('./Routes/routes.js');
+const invalidRoute = require('./ErrorandIssues/invalidRoute.js');
+const errorHandler = require('./ErrorandIssues/errorHandler.js')
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const PORT = process.env.PORT || 5001
@@ -39,7 +40,13 @@ app.use(express.json());
 app.use(logger);
 
 //Route
-app.use(route)
+app.use('/',route);
+
+// Invalid Route
+app.use(invalidRoute);
+app.use(errorHandler);
+
+
 
 
 app.listen(PORT, ()=> console.log(`Server running on ${PORT}`));
