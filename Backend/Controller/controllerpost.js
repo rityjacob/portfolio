@@ -18,6 +18,10 @@ export const getServer = (req,res)=>{
     res.json('hello');
 }
 
+export const pingServer = (req,res)=>{
+    res.json({ success: true, message: 'Server is awake!' });
+}
+
 
 
 export const postContact = async(req,res) =>{

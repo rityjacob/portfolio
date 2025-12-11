@@ -1,3 +1,20 @@
+// Wake up backend server when page loads
+window.addEventListener('DOMContentLoaded', async () => {
+    const apiUrl = 'https://portfolio-5zd9.onrender.com/api/ping';
+    try {
+        await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log('Backend server pinged successfully');
+    } catch (error) {
+        // Silently fail - don't interrupt user experience
+        console.log('Backend ping failed (server may be waking up):', error.message);
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
