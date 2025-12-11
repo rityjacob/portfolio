@@ -50,7 +50,7 @@ export const postContact = async(req,res) =>{
 
         console.log('Sending user email...');
         // Email to the User
-        bodyUser =` Hello ${name}, Thank you for your message. I will get back to you soon`
+        const bodyUser = ` Hello ${name}, Thank you for your message. I will get back to you soon`
 
         await sendEmailToUser(email,bodyUser);
 
