@@ -254,7 +254,7 @@ contactButton.addEventListener('click',async(e)=>{
     //base url
     const apiUrl = 'https://portfolio-5zd9.onrender.com/api/contact'
 
-    try {
+    try {r
         const response = await fetch(apiUrl,{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
