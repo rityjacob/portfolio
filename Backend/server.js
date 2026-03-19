@@ -2,12 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const logger = require('./Logger/logger.js');
-const {Resend} = require('../node_modules/resend/dist/index.cjs');
 const route = require('./Routes/routes.js');
 const invalidRoute = require('./ErrorandIssues/invalidRoute.js');
 const errorHandler = require('./ErrorandIssues/errorHandler.js')
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 const PORT = process.env.PORT || 5001
 const app = express();
 

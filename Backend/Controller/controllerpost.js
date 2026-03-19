@@ -1,6 +1,14 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazily create the Resend client so the server can still start and
+// `/api/ping` can work even if RESEND_API_KEY is not set.
+function getResendClient() {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+        throw new Error('Missing RESEND_API_KEY');
+    }
+    return new Resend(apiKey);
+}
 
 export const getPosts = (req,res) => {
     
@@ -68,6 +76,7 @@ export const postContact = async(req,res) =>{
 
 async function sendEmail(to_email, subject, body) {
   try {
+    const resend = getResendClient();
     const data = await resend.emails.send({
       from: 'Rity <contact@rityjacob.com>',
       to: to_email,
@@ -85,6 +94,7 @@ async function sendEmail(to_email, subject, body) {
 
 async function sendEmailToUser(email, bodyUser) {
   try {
+    const resend = getResendClient();
     const data = await resend.emails.send({
       
       from: 'Rity <contact@rityjacob.com>',
