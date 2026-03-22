@@ -38,7 +38,9 @@ body {
     padding: 80px 0 60px;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    /* visible so .hero-nav can scroll horizontally on narrow widths */
+    overflow-x: visible;
+    overflow-y: hidden;
 }
 
 .hero::after {
@@ -53,7 +55,7 @@ body {
 }
 
 .hero-content {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -79,17 +81,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .hero-nav a {
     color: var(--primary-color);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 0.55rem;
     border-radius: 6px;
     position: relative;
     overflow: hidden;
@@ -119,8 +122,26 @@ body {
 
 .nav-separator {
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
+    flex-shrink: 0;
+}
+
+/* One-line nav: allow horizontal scroll if viewport is still too narrow */
+@media (max-width: 1100px) {
+    .hero-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding-bottom: 0.25rem;
+    }
+
+    .hero-nav a,
+    .hero-nav .nav-separator {
+        flex-shrink: 0;
+    }
 }
 
 /* Resume Download Button */
@@ -940,12 +961,25 @@ body {
     }
 
     .hero-nav {
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 0.35rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding-bottom: 0.35rem;
     }
 
     .hero-nav a {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 0.35rem 0.45rem;
+        flex-shrink: 0;
+    }
+
+    .hero-nav .nav-separator {
+        flex-shrink: 0;
     }
 
     .skill-items {
